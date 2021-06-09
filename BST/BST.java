@@ -109,6 +109,21 @@ public static boolean find(Node node, int data){
   return data == node.data || find(node.left,data) || find(node.right,data);
 } 
 
+public static void pir(Node node, int d1, int d2) {
+    if(node == null)
+    return;
+    if(d1 > node.data && d2 > node.data){
+        pir(node.right,d1,d2);
+    }
+    else if(d1 < node.data && d2 < node.data){
+        pir(node.left,d1,d2);
+    }else{
+        pir(node.left,d1,d2);
+        System.out.println(node.data);
+        pir(node.right,d1,d2);
+    }
+  }
+
 public static void printTarget(Node node, Node root,int target){
     if(node == null) return;
     int n1 = node.data;
