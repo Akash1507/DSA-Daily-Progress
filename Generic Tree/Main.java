@@ -254,6 +254,21 @@ public class Main {
             return res;
         } 
 
+        static ArrayList<Integer> nodeToRootPath(Node node,int data){
+            if(node.data == data){
+                ArrayList<Integer> res = new ArrayList<>();
+                res.add(node.data);
+                return res;
+            }
+            for(Node child:node.children){
+                ArrayList<Integer> rres = nodeToRootPath(child,data);
+                if(rres.size()>0){
+                    rres.add(node.data);
+                    return rres;
+                }
+            }
+            return new ArrayList<>();
+        }
 
         public static void solve() {
             Integer[] arr = {10,20,50,null,60,null,null,30,70,null,80,110,null,
@@ -276,6 +291,7 @@ public class Main {
             // removeOptimised(root);
             // display(root);
             System.out.println(find(root,130));
+            System.out.println(nodeToRootPath(root,110));
         }
 
     }
